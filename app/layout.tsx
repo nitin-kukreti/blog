@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter,Dr_Sugiyama,DM_Sans,Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+export const inter = Inter({ subsets: ["latin"] });
+const dr_Sugiyama = Dr_Sugiyama({
+  subsets: ["latin"],
+  weight: "400"
+});
+const dmSans = DM_Sans({subsets:["latin"]});
+
+export const poppins400 = Poppins({subsets:["latin"],weight:'400'});
+export const poppins600 = Poppins({subsets:["latin"],weight:'600'});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +24,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className+' px-[17px] sm:px-[80px] lg:px-[120px'}>
+        <header className="flex justify-between">
+          <span className={dr_Sugiyama.className+' text-[25px] sm:text-[40px] lg:text-[50px] '}>nitin</span>
+          <nav className={"flex list-none gap-5 items-center text-[13px] md:text-[20px]  text-[#666] "+dmSans.className}>
+            <li className="hover:text-black cursor-pointer">Home</li>
+            <li className="hover:text-black cursor-pointer">Blog</li>
+            <li className="hover:text-black cursor-pointer">Tech</li>
+            <li className="hover:text-black cursor-pointer">Contact</li>
+          </nav>
+        </header>
+        {children}
+        </body>
     </html>
   );
 }
